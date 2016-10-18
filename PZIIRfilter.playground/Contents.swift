@@ -152,57 +152,59 @@ func FTPLZ (RmagZeros: [Double],THphaseZeros: [Double],PmagPoles: [Double],PHpha
         print("HW=\(HW)")
         
         
-//        for k in (0..<mTopNum){//start for index Do 100
-//            
-//            HW1.j=THphaseZeros[k]*pi/180.0
-//            HW1=CEXP(c1: HW1)
-//            
-//            let x = eJW.r
-//            let y = RmagZeros[k]
-//            eJW.r=x - y
-//            HW=HW*eJW*HW1
-//            
-//        }//end for index 100
-//        
-//        
-//        for k in (0..<nBotNum){//for index1
-//            
-//            HW4.j=THphaseZeros[k]*pi/180.0
-//            HW5=CEXP(c1: HW4)
-//            let x = eJW.r
-//            let y = PmagPoles[k]
-//            
-//            eJW.r=x - y
-//            
-//            HW=HW/(eJW*HW5)
-//            
-//            print("HW=\(HW)")
-//            
-//        }//end index1 200
-//        
-//    
-//        
-//        if abs(HW.r)<EPS && abs(HW.j)<EPS {//start if1
-//            if i>2 {//start if2
-//                XPHA[i]=2.0*XPHA[i-1]-XPHA[i-2]
-//            }//end if2
-//            else if abs(HW.r)<EPS{//start else if
-//                
-//                XPHA[i]=SIGN(a: 1.0, b: HW.j)*0.5*pi
-//            }//end else if
-//        }//end if1
-//        else
-//        {//start else
-//            
-//            let IX=(1.0-SIGN(a: 1.0, b: HW.r))/2.0
-//            let IY=SIGN(a: 1.0, b: HW.j)
-//            XPHA[i]=atan(HW.j/HW.r)+IX*IY*pi
-//        }//end else
-//        
-//        
-//        XMAG[i]=CABS(c1: HW)
-//        
-//        
+        for k in (0..<mTopNum){//start for index Do 100
+            HW1.r=0.0
+            HW1.j=THphaseZeros[k]*pi/180.0
+            HW1=CEXP(c1: HW1)
+            print("HW1=\(HW1)")
+            
+            let x = eJW.r
+            let y = RmagZeros[k]
+            eJW.r=x - y
+            HW=HW*eJW*HW1
+            print("HW1=\(HW)")
+            
+        }//end for index 100
+
+        
+        for k in (0..<nBotNum){//for index1
+            HW4.r=0.0
+            HW4.j=THphaseZeros[k]*pi/180.0
+            HW5=CEXP(c1: HW4)
+            let x = eJW.r
+            let y = PmagPoles[k]
+            
+            eJW.r=x - y
+            
+            HW=HW/(eJW*HW5)
+            
+            print("HW=\(HW)")
+            
+        }//end index1 200
+
+    
+        
+        if abs(HW.r)<EPS && abs(HW.j)<EPS {//start if1
+            if i>2 {//start if2
+                XPHA[i]=2.0*XPHA[i-1]-XPHA[i-2]
+            }//end if2
+            else if abs(HW.r)<EPS{//start else if
+                
+                XPHA[i]=SIGN(a: 1.0, b: HW.j)*0.5*pi
+            }//end else if
+        }//end if1
+        else
+        {//start else
+            
+            let IX=(1.0-SIGN(a: 1.0, b: HW.r))/2.0
+            let IY=SIGN(a: 1.0, b: HW.j)
+            XPHA[i]=atan(HW.j/HW.r)+IX*IY*pi
+        }//end else
+        
+        
+        XMAG[i]=CABS(c1: HW)
+        
+        
         
         
         
@@ -223,4 +225,5 @@ let output=FTPLZ(RmagZeros: R, THphaseZeros: TH, PmagPoles: P, PHphasePoles: PH,
 
 let mag=output.Mag
 let phase=output.Phase
-
+print("mag=\(mag)")
+print("phase=\(phase)")
