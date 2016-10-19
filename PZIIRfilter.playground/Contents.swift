@@ -244,6 +244,8 @@ func FTPLZ (RmagZeros: [Double],THphaseZeros: [Double],PmagPoles: [Double],PHpha
         
         XMAG[i]=CABS(c1: HW)
         
+         print("XMAG=\(XMAG[i])")
+        
         
         
         
