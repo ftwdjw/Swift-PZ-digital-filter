@@ -171,9 +171,12 @@ func FTPLZ (RmagZeros: [Double],THphaseZeros: [Double],PmagPoles: [Double],PHpha
     }//end if
     
     for i in (0..<lPoints){//start for i Do 300
-        print("\nomega=\(DW*Double(i))")
-        Omega.append(DW*Double(i))
+      
         x=(Double(i)*DW)
+        
+        print("\nomega=\(x)")
+        Omega.append(x)
+        
         eJW1.r=0.0
         eJW1.j=x
         eJW=CEXP(c1: eJW1)
