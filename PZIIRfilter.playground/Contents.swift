@@ -147,7 +147,6 @@ func FTPLZ (RmagZeros: [Double],THphaseZeros: [Double],PmagPoles: [Double],PHpha
     var XMAG=[Double](repeating:0.0, count: lPoints)
     var XPHA=[Double](repeating:0.0, count: lPoints)
     var Omega=[Double]()
-    var MagDB=[Double]()
     
     var eJW1=Complex(r:0.0,j:0.0)
     var eJW=Complex(r:0.0,j:0.0)
