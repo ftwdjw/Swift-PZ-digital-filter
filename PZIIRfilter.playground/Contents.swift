@@ -1,4 +1,4 @@
-//: Playground - noun: a place where people can play
+//: plot frequency response from z transform poles and zeros
 
 import UIKit
 import Accelerate
@@ -144,13 +144,13 @@ func FTPLZ (RmagZeros: [Double],THphaseZeros: [Double],PmagPoles: [Double],PHpha
     let nBotNum=PmagPoles.count  //number of poles on bottom
     
     
-    var XMAG=[Double](repeating:0.0, count: lPoints)
-    var XPHA=[Double](repeating:0.0, count: lPoints)
-    var Omega=[Double]()
+    var XMAG=[Double](repeating:0.0, count: lPoints)//output mag
+    var XPHA=[Double](repeating:0.0, count: lPoints)//output phase
+    var Omega=[Double]()//output radians
     
     var eJW1=Complex(r:0.0,j:0.0)
     var eJW=Complex(r:0.0,j:0.0)
-    var HW=Complex(r: 0,j: 0)
+    var HW=Complex(r: 0,j: 0) //output frequncy response
     var HW1=Complex(r: 0,j: 0)
     var HW2=Complex(r: 0,j: 0)
     var HW3=Complex(r: 0,j: 0)
@@ -262,12 +262,12 @@ func FTPLZ (RmagZeros: [Double],THphaseZeros: [Double],PmagPoles: [Double],PHpha
 }//end
 
 
-let R=[0.0]
-let TH=[0.0]
-let P=[0.8]
-let PH=[0.0]
-let gain=1.0
-let points=4
+let R=[0.0] //zeros mag
+let TH=[0.0] //zeros phase
+let P=[0.8]  //poles magnitude
+let PH=[0.0] //poles phase
+let gain=1.0 //gain
+let points=4 //number of points to plot
 
 let output=FTPLZ(RmagZeros: R, THphaseZeros: TH, PmagPoles: P, PHphasePoles: PH, gain: gain, lPoints: points)
 
